@@ -1,0 +1,17 @@
+Task:
+
+Your job is to create a CDI bean from the provided Spring Data repository.
+
+Present result as plain text containing the java source code only without any additional formatting including ```java and ```.
+
+Instructions:
+
+- CDI bean name must be the same as the name of the provided class.
+- Target CDI version is Jakarta Contexts and Dependency Injection 4.0 which uses `jakarta.enterprise.*` namespace (NOT `javax.*`).
+- Annotate the class with `@ApplicationScoped` to define its lifecycle.
+- Fully implement all methods:
+    - Include methods from Spring Data interfaces (e.g., `save`, `findById`, `deleteById`).
+    - Implement custom query methods using JPA's `EntityManager`, CriteriaBuilder, or named/native SQL queries as needed.
+    - Ensure method signatures in the CDI bean match the interface for seamless migration.
+- Replace all Spring exceptions with Helidon MP equivalents. If no equivalent is available use `RuntimeException`.
+- Place the summary and other instructions for user in the commented out section of this file.

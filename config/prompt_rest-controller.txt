@@ -1,0 +1,15 @@
+Task:
+
+Convert Spring Boot Rest Controller to Jakarta RESTful Web Services (JAX-RS) version 3.1 to be used in Helidon MP project.
+
+Present result as plain text containing the java source code only without any additional formatting including ```java and ```.
+
+Instructions:
+
+- Target Jakarta RESTful Web Services (JAX-RS) version is 3.1. which uses `jakarta.*` namespace (NOT `javax.*`).
+- Replace `@RestController` with `@Path` and appropriate JAX-RS annotations, such as `@GET`, `@POST`, `@PUT`, etc.
+- Update method annotations (e.g., `@RequestMapping`, `@GetMapping`) to JAX-RS equivalents.
+- Maintain consistency in HTTP methods, paths, and parameter mappings.
+- For request parameter handling, replace Spring annotations like `@RequestParam` and `@PathVariable` with JAX-RS equivalents (`@QueryParam` and `@PathParam`).
+- Use constructor injection
+- Make class a `@RequestScoped` CDI bean. Target CDI version is Jakarta Contexts and Dependency Injection 4.0.

@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 
 public class FileLister {
 
-    public static List<String> listFiles(String rootDir, List<String> exclusions, List<String> inclusions) {
-        var files = new ArrayList<String>();
+    public static List<Path> listFiles(String rootDir, List<String> exclusions, List<String> inclusions) {
+        var files = new ArrayList<Path>();
         var root = new File(rootDir);
 
         if (!root.isDirectory()) {
@@ -17,12 +17,12 @@ public class FileLister {
         }
 
         var exclusionPatterns = new ArrayList<Pattern>();
-        for (String exclusion : exclusions) {
+        for (var exclusion : exclusions) {
             exclusionPatterns.add(Pattern.compile(globToRegex(exclusion)));
         }
 
         var inclusionPatterns = new ArrayList<Pattern>();
-        for (String inclusion : inclusions) {
+        for (var inclusion : inclusions) {
             inclusionPatterns.add(Pattern.compile(globToRegex(inclusion)));
         }
 
@@ -30,7 +30,7 @@ public class FileLister {
         return files;
     }
 
-    private static void listFilesRecursive(File directory, Path rootPath, List<Pattern> exclusionPatterns, List<Pattern> inclusionPatterns, List<String> files) {
+    private static void listFilesRecursive(File directory, Path rootPath, List<Pattern> exclusionPatterns, List<Pattern> inclusionPatterns, List<Path> files) {
         var fileList = directory.listFiles();
 
         if (fileList == null) {
@@ -49,14 +49,14 @@ public class FileLister {
                 listFilesRecursive(file, rootPath, exclusionPatterns, inclusionPatterns, files);
             } else {
                 if (inclusionPatterns.isEmpty() || matchesInclusions(relativePathString, inclusionPatterns)) {
-                    files.add(relativePathString);
+                    files.add(file.toPath());
                 }
             }
         }
     }
 
     private static boolean matchesExclusions(String filePath, List<Pattern> exclusionPatterns) {
-        for (Pattern pattern : exclusionPatterns) {
+        for (var pattern : exclusionPatterns) {
             if (pattern.matcher(filePath).matches()) {
                 return true;
             }

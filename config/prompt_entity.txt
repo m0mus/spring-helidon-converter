@@ -1,0 +1,11 @@
+Task:
+
+Remove/replace all Spring Boot related code from the provided JPA entity.
+Present result as plain text containing the java source code only without any additional formatting including ```java and ```.
+
+Instructions:
+
+- Replace Spring-specific annotations with standard JPA equivalents, ensuring compatibility with Helidon:
+    - Examples: Replace `@GeneratedValue(strategy = GenerationType.IDENTITY)` with compatible JPA annotations if required.
+- Retain existing class structure and relationships (e.g., `@OneToMany`, `@ManyToOne`) as-is unless modification is required for compatibility.
+- Keep existing package name and class name.

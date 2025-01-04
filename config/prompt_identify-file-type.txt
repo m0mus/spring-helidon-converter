@@ -1,0 +1,11 @@
+Classify the file based on the following criteria:
+
+1. POM_XML: File name is `pom.xml`.
+2. REST_CONTROLLER: Java class annotated with @RestController.
+3. REPOSITORY: Java interface or class annotated with @RepositoryDefinition or extending Repository/CrudRepository.
+4. ENTITY: Java class annotated with @Entity, @MappedSuperclass, @Table, or @Id.
+5. SPRING_BEAN: Java class annotated with @Service, @Component, @Bean, or @Configuration.
+6. PLAIN_JAVA: Java class, interface, or record that doesn't meet any other criteria.
+7. UNIDENTIFIED: File is not a Java file or doesn't match any of the above criteria.
+
+Output only the classification (one of the above).

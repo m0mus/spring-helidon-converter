@@ -1,0 +1,106 @@
+Task: Convert Spring Boot `pom.xml` to Helidon MP
+
+Your job is to analyze the provided Spring Boot build script and convert it to use Helidon instead.
+
+Present result as plain text containing XML code only without any additional formatting including ```xml and ```.
+
+Instructions:
+
+- Start with the provided pom.xml template (see below), ensuring all dependencies and plugins in the template are retained.
+- Replace Spring-specific dependencies with Helidon MP 4.1.5 or standard Jakarta EE equivalents where applicable.
+- For dependencies without Helidon MP equivalents:
+  - Retain them in the pom.xml but comment them out with an explanation and a 'TODO' comment for manual review.
+- Ensure critical libraries like Jackson and MapStruct are included:
+  - Adapt them to Helidon if possible or retain them (commented out, if necessary) with a clear explanation.
+- Add any required libraries or plugins needed for project build and runtime, ensuring compatibility with Helidon MP.
+- The response must contain the converted `pom.xml` file only as plain text without any additional Markdown formatting. Place the summary and other instructions for user in the commented out section of this file.
+
+Dependency Replacement Rules for `pom.xml`:
+
+Follow these rules when converting dependencies:
+
+1. JTA (Jakarta Transactions):
+   Replace any Spring Transaction dependencies with the following:
+   <dependency>
+       <groupId>jakarta.transaction</groupId>
+       <artifactId>jakarta.transaction-api</artifactId>
+       <scope>provided</scope>
+   </dependency>
+   <dependency>
+       <groupId>io.helidon.integrations.cdi</groupId>
+       <artifactId>helidon-integrations-cdi-jta-weld</artifactId>
+       <scope>runtime</scope>
+   </dependency>
+
+2. JPA (Jakarta Persistence):
+   Replace Spring JPA dependencies with:
+   <dependency>
+       <groupId>jakarta.persistence</groupId>
+       <artifactId>jakarta.persistence-api</artifactId>
+       <scope>provided</scope>
+   </dependency>
+   <dependency>
+       <groupId>io.helidon.integrations.cdi</groupId>
+       <artifactId>helidon-integrations-cdi-jpa</artifactId>
+       <scope>runtime</scope>
+   </dependency>
+
+3. MapStruct
+   - Retain all MapStruct dependencies.
+   - Add `mapstruct-processor` annotation processor to `maven-compiler-plugin` configuration.
+   - Ensure that it's configured to generate Jakarta CDI (not Spring) source code.
+
+4. Other Libraries (e.g., Jackson):
+   - Retain all dependencies for other libraries used in the project.
+   - Add comments explaining their purpose and any manual steps required if they cannot be adapted to Helidon directly.
+
+`pom.xml` File Template:
+
+Use the following structure for the `pom.xml` file in the converted project:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.helidon.applications</groupId>
+        <artifactId>helidon-mp</artifactId>
+        <version>4.1.5</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>your-group-id</groupId>
+    <artifactId>your-artifact-id</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.helidon.microprofile.bundles</groupId>
+            <artifactId>helidon-microprofile</artifactId>
+        </dependency>
+        <!-- Add converted dependencies here -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-libs</id>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>io.smallrye</groupId>
+                <artifactId>jandex-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>make-index</id>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

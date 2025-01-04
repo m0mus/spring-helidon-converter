@@ -1,0 +1,15 @@
+Task: Convert Spring bean to CDI bean
+
+Your job is to analyze the provided Java file containing a Spring bean and convert it to Jakarta CDI bean. The target file will be used in Helidon MP 4.1.5 project.
+
+Present result as plain text containing the java source code only without any additional formatting including ```java and ```.
+
+Instructions:
+
+- Convert provided Spring bean to Jakarta CDI.
+- Target CDI version is Jakarta Contexts and Dependency Injection 4.0.
+- Replace all Spring specific code to Helidon MP equivalents.
+- Replace all Spring exceptions with Helidon MP equivalents. If no equivalent is available use `RuntimeException`.
+- Add TODO comments for sections requiring manual intervention.
+- Make the target bean `@ApplicationScoped`.
+- Place the summary and other instructions for user in the commented out section of this file.
