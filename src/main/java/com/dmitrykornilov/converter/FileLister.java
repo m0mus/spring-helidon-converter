@@ -1,4 +1,4 @@
-package converter;
+package com.dmitrykornilov.converter;
 
 import java.io.File;
 import java.nio.file.Path;
