@@ -68,7 +68,7 @@ public class ServiceFactory {
 
     private ChatLanguageModel createModel() {
         return OpenAiChatModel.builder()
-                .apiKey(config.get("OPENAI_API_KEY").asString().orElse("demo"))
+                .apiKey(config.get("model.api-key").asString().orElse("demo"))
                 .modelName(config.get("model.name").asString().orElse(GPT_4_O_MINI.toString()))
                 .timeout(Duration.ofMinutes(config.get("model.timeout").asInt().orElse(30)))
                 .build();
