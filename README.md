@@ -1,4 +1,4 @@
-# Spring to Helidon Converter
+# Spring to Helidon AI Converter (Incremental)
 
 This project provides an application and a set of customizable prompts to convert Maven-based Spring Boot projects into Helidon MP projects.
 
