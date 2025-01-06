@@ -6,8 +6,8 @@ Present result as plain text containing the java source code only without any ad
 Instructions:
 
 - Keep the MapStruct annotations and functionality intact as they are needed for the existing functionality.
-- Remove any Spring-specific code, such as Spring annotations, exceptions, or other Spring-related functionality, and replace them with plain Java alternatives or equivalent solutions.
-- Exceptions Handling: If there are any Spring-specific exceptions (e.g., ResourceNotFoundException, HttpStatusException, etc.), replace them with Helidon MP equivalents or RuntimeException if no direct equivalent exists.
+- Remove any Spring-specific code, such as Spring annotations or other Spring-related functionality, and replace them with plain Java alternatives or equivalent solutions.
+- Exceptions Handling: If there are any Spring-specific exceptions (e.g., ResourceNotFoundException, HttpStatusException, etc.), replace them with RuntimeException.
 - Code related to MapStruct, Jackson, or other non-Spring libraries should remain unchanged.
 - Keep all MapStruct annotations intact (@Mapper, @Mapping, etc.).
 - Add TODO comments for any section requiring manual intervention or mapping that may be specific to your domain.

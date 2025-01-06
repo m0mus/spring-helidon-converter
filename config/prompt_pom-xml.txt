@@ -48,7 +48,8 @@ Follow these rules when converting dependencies:
 3. MapStruct
    - Retain all MapStruct dependencies.
    - Add `mapstruct-processor` annotation processor to `maven-compiler-plugin` configuration.
-   - Ensure that it's configured to generate Jakarta CDI (not Spring) source code.
+   - Ensure that it's configured to generate Jakarta CDI (-Amapstruct.defaultComponentModel=jakarta-cdi) source code.
+
 
 4. Other Libraries (e.g., Jackson):
    - Retain all dependencies for other libraries used in the project.

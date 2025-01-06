@@ -6,7 +6,7 @@ Present result as plain text containing the java source code only without any ad
 
 Instructions:
 
-- CDI bean name must be the same as the name of the provided class.
+- CDI bean name must be the same as the name of the provided Spring Data repository interface.
 - Target CDI version is Jakarta Contexts and Dependency Injection 4.0 which uses `jakarta.enterprise.*` namespace (NOT `javax.*`).
 - Annotate the class with `@ApplicationScoped` to define its lifecycle.
 - Fully implement all methods:

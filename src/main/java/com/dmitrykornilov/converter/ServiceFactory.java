@@ -67,10 +67,12 @@ public class ServiceFactory {
     }
 
     private ChatLanguageModel createModel() {
+        var modelName = config.get("model.name").asString().orElse(GPT_4_O_MINI.toString());
+        System.out.println("Model: " + modelName);
         return OpenAiChatModel.builder()
                 .apiKey(config.get("model.api-key").asString().orElse("demo"))
                 .baseUrl(config.get("model.base-url").asString().orElse(null))
-                .modelName(config.get("model.name").asString().orElse(GPT_4_O_MINI.toString()))
+                .modelName(modelName)
                 .timeout(Duration.ofMinutes(config.get("model.timeout").asInt().orElse(30)))
                 .build();
     }
