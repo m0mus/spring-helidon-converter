@@ -1,4 +1,4 @@
-package com.dmitrykornilov.converter;
+package net.dmitrykornilov.converter;
 
 import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.UserMessage;

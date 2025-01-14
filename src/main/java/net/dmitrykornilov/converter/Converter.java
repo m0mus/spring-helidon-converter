@@ -1,4 +1,4 @@
-package com.dmitrykornilov.converter;
+package net.dmitrykornilov.converter;
 
 import java.io.IOException;
 import java.nio.file.Files;
