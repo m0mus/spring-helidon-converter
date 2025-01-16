@@ -43,11 +43,11 @@ public class ServiceFactory {
     }
 
     private String readFileTypePrompt() {
-        return readPrompt("prompt_identify-file-type.txt");
+        return readPrompt("prompt_identify_file_type.txt");
     }
 
     private String readConvertPrompt(String fileType) {
-        var promptFile = "prompt_" + fileType.toLowerCase().replace("_", "-") + ".txt";
+        var promptFile = "prompt_" + fileType.toLowerCase() + ".txt";
         return readPrompt(promptFile);
     }
 

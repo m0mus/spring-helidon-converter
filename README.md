@@ -17,7 +17,7 @@ Each file in the project being converted goes through a two-step process:
 
 ### 1. Identify File Type
 
-The file is sent to the LLM to determine its type, such as REST Controller, Spring Data Repository, JPA Entity, etc. The file types are described in the `config/prompt_identify-file-type.txt` file, which can be modified to suit your needs.
+The file is sent to the LLM to determine its type, such as REST Controller, Spring Data Repository, JPA Entity, etc. The file types are described in the `config/prompt_identify_file_type.txt` file, which can be modified to suit your needs.
 
 ### 2. Convert the File
 
@@ -52,14 +52,14 @@ The converter is highly configurable. Prompts and LLM properties can be edited w
 Configuration files are located in the `./config` directory:
 
 - `converter.properties`: Main configuration file.
-- `prompt_identify-file-type.txt`: Instructions for identifying file types.
+- `prompt_identify_file_type.txt`: Instructions for identifying file types.
 - `prompt_<file-type>.txt`: Prompts for converting specific file types.
 
 ### Adding or Modifying File Types
 
-To add or delete file types, update `prompt_identify-file-type.txt` and create the corresponding prompt files. For example, to add a `DTO` file type:
+To add or delete file types, update `prompt_identify_file_type.txt` and create the corresponding prompt files. For example, to add a `DTO` file type:
 
-1. Add instructions for identifying DTOs in `prompt_identify-file-type.txt`:
+1. Add instructions for identifying DTOs in `prompt_identify_file_type.txt`:
 
     ```text
     7. DTO: Explain how to identify this file type here.
